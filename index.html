@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galaxy IE</title>
- <link rel="icon" href="galax_logo2.png" type="image/png"> <!-- Adding the favicon -->
+    <link rel="icon" href="galaxy_logo2.png" type="image/png"> <!-- Adding the favicon -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,6 +12,7 @@
             padding: 0;
             background-color: #fff; /* White background */
             color: #000; /* Black text */
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
         .container {
@@ -158,6 +159,21 @@
             background-color: blue;
         }
 
+        /* Adjusted iframe style */
+        iframe {
+            width: 100%;
+            height: 300px; /* Adjust the height as needed */
+            border: none;
+        }
+
+        .iframe-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999; /* Ensure it appears on top of other content */
+            background-color: #fff; /* Adjust background color as needed */
+        }
     </style>
 </head>
 <body>
@@ -169,48 +185,48 @@
         <p>Call or WhatsApp: <a href="tel:2129978511">212-997-8511</a></p>
         <p>Email: <a href="mailto:galaxyie2000@yahoo.com">galaxyie2000@yahoo.com</a></p>
         <!-- Catalog Button -->
-                <a href="Galaxy IE Catalogue.pdf" class="catalog-button" id="catalogButton">View Catalog</a>
+        <a href="Galaxy IE Catalogue.pdf" class="catalog-button" id="catalogButton">View Catalog</a>
         <!-- New button for downloading contact info -->
         <button class="download-button" id="downloadButton" onclick="downloadContactInfo()">Save Contact</button>
     </div>
-<div class="container">
-        <iframe src="https://drive.google.com/file/d/1GfDRXk6WHXZ9SGWPMzzf--UITUxW-F9Z/preview"></iframe>
-        <div class="pdf-link">
-            <a href="https://drive.google.com/file/d/1GfDRXk6WHXZ9SGWPMzzf--UITUxW-F9Z/view?usp=sharing" target="_blank">Open PDF in a new tab</a>
-        </div>
+    <div class="iframe-container">
+        <!-- Adjusted iframe -->
+        <iframe src="https://drive.google.com/file/d/1GfDRXk6WHXZ9SGWPMzzf--UITUxW-F9Z/preview" frameborder="0" allowfullscreen></iframe>
     </div>
-</body>
-<script>
-    // Function to handle the download of contact information
-    function downloadContactInfo() {
-        // Construct vCard content
-        var vCardData = [
-            'BEGIN:VCARD',
-            'VERSION:3.0',
-            'FN:Galaxy IE Corp',
-            'ADR;TYPE=WORK:;;58 W 47th St, Booth #30-31, New York, NY 10036',
-            'TEL;TYPE=CELL:+12129978511',
-            'EMAIL:galaxyie2000@yahoo.com',
-            'END:VCARD'
-        ].join('\n');
 
-        // Create a Blob with the vCard content
-        var blob = new Blob([vCardData], { type: 'text/vcard' });
+    <script>
+        // Function to handle the download of contact information
+        function downloadContactInfo() {
+            // Construct vCard content
+            var vCardData = [
+                'BEGIN:VCARD',
+                'VERSION:3.0',
+                'FN:Galaxy IE Corp',
+                'ADR;TYPE=WORK:;;58 W 47th St, Booth #30-31, New York, NY 10036',
+                'TEL;TYPE=CELL:+12129978511',
+                'EMAIL:galaxyie2000@yahoo.com',
+                'END:VCARD'
+            ].join('\n');
+                // Create a Blob with the vCard content
+                var blob = new Blob([vCardData], { type: 'text/vcard' });
 
-        // Create a temporary anchor element to trigger the download
-        var a = document.createElement('a');
-        a.href = window.URL.createObjectURL(blob);
-        a.download = 'Galaxy_IE_Corp_Contact.vcf';
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    }
+                // Create a temporary anchor element to trigger the download
+                var a = document.createElement('a');
+                a.href = window.URL.createObjectURL(blob);
+                a.download = 'Galaxy_IE_Corp_Contact.vcf';
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
 
-    // Attach click event listener to the download button
-    document.getElementById("downloadButton").addEventListener("click", function() {
-        downloadContactInfo();
-    });
-</script>
-</body>
+            // Attach click event listener to the download button
+            document.getElementById("downloadButton").addEventListener("click", function() {
+                downloadContactInfo();
+            });
+        </script>
+    </body>
 </html>
+
+           
+
