@@ -17,7 +17,7 @@
 
         .container {
             max-width: 90%;
-            margin: 0 auto; /* Adjusted margin to remove space between container and iframe */
+            margin: 18px auto;
             padding: 20px;
             background-color: #fffbe6; /* Gold container background */
             border-radius: 8px;
@@ -26,60 +26,58 @@
             animation: fadeIn 1s ease; /* Fade-in animation */
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        .business-name {
+            font-size: 32px; /* Adjusted font size for business name */
+            font-weight: bold;
+            color: #000; /* Black text */
+            margin-bottom: 20px;
+            animation: fadeInLeft 1s ease forwards; /* Slide in from left animation */
         }
 
-        p {
-            margin: 0; /* Set margin to zero */
-            font-size: 20px; /* Adjusted font size for all paragraphs */
-            animation: fadeInUp 1s ease forwards; /* Slide up animation */
-            display: none; /* Hide paragraphs by default */
+        img.logo {
+            width: 50%; /* Adjusted logo width */
+            max-width: 200px; /* Set maximum width */
+            height: auto; /* Maintain aspect ratio */
+            display: block;
+            margin: 0 auto 10px;
+            animation: bounce 0.5s ease; /* Bounce animation */
+        }
+
+        /* Style for the catalog button */
+        .catalog-button, #downloadButton {
+            background-color: blue;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .catalog-button:hover, #downloadButton:hover {
+            background-color: Green;
         }
 
         iframe {
             width: 100%;
-            height: 300px;
+            height: 100vh; /* Set height to fill the entire viewport */
             border: none;
-        }
-
-        .iframe-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: 9999; /* Ensure it appears on top of other content */
-            background-color: #fff; /* Adjust background color as needed */
-            height: 300px; /* Adjust height as needed */
-            transition: height 0.5s; /* Smooth transition for height change */
-        }
-
-        .iframe-container:hover {
-            height: 600px; /* Adjust expanded height on hover */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <p class="business-name">Galaxy IE Corp</p>
-        <p>58 W 47th St</p>
-        <p>Booth #30-31 </p>
-        <p>New York, NY 10036</p>
-        <p>Call or WhatsApp: <a href="tel:2129978511">212-997-8511</a></p>
-        <p>Email: <a href="mailto:galaxyie2000@yahoo.com">galaxyie2000@yahoo.com</a></p>
         <!-- Catalog Button -->
-        <a href="Galaxy IE Catalogue.pdf" class="catalog-button" id="catalogButton">View Catalog</a>
+        <a href="Galaxy IE Catalogue.pdf" class="catalog-button" id="catalogButton">Dowload Catalog</a>
         <!-- New button for downloading contact info -->
         <button class="download-button" id="downloadButton" onclick="downloadContactInfo()">Save Contact</button>
     </div>
-    <div class="iframe-container">
-        <iframe src="https://drive.google.com/file/d/1GfDRXk6WHXZ9SGWPMzzf--UITUxW-F9Z/preview" frameborder="0" allowfullscreen></iframe>
-    </div>
+    <iframe id="iframe" src="https://drive.google.com/file/d/1GfDRXk6WHXZ9SGWPMzzf--UITUxW-F9Z/preview" frameborder="0" allowfullscreen></iframe>
 
     <script>
         // Function to handle the download of contact information
@@ -107,12 +105,6 @@
             a.click();
             document.body.removeChild(a);
         }
-
-        // Attach click event listener to the download button
-        document.getElementById("downloadButton").addEventListener("click", function() {
-            downloadContactInfo();
-        });
     </script>
 </body>
 </html>
-
